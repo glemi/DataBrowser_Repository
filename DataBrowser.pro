@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    measurement.cpp
+	    measurement.cpp \
+		datasetmodel.cpp		
 
 HEADERS  += mainwindow.h \
-    measurement.h
+	    measurement.h \
+		datasetmodel.h
 
 FORMS    += mainwindow.ui
