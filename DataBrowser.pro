@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-08-26T21:00:32
+# Project created by QtCreator 2013-09-05T19:23:46
 #
 #-------------------------------------------------
 
@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    datasetmodel.cpp
+	    measurement.cpp \
+		datasetmodel.cpp		
 
 HEADERS  += mainwindow.h \
-    datasetmodel.h
+	    measurement.h \
+		datasetmodel.h
 
 FORMS    += mainwindow.ui

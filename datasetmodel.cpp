@@ -7,12 +7,12 @@ DataSetModel::DataSetModel(QObject *parent) :
 
 }
 
-Qt::ItemFlags DataSetModel::flags(const QModelIndex &index) const
+Qt::ItemFlags flags(const QModelIndex &index) const
 {
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
 
-QVariant DataSetModel::data(const QModelIndex &index, int role) const
+QVariant data(const QModelIndex &index, int role) const
 {
     switch (role) 
     {
@@ -29,12 +29,12 @@ QVariant DataSetModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-QVariant DataSetModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant headerData(int section, Qt::Orientation orientation, int role) const
 {
     return QVariant();
 }
 
-int DataSetModel::columnCount(const QModelIndex &parent) const
+int rowCount(const QModelIndex &parent) const
 {
     return 0;
 }
