@@ -2,22 +2,26 @@
 #define MEASUREMENT_H
 
 #include <QString>
+#include "matstruct.h"
+#include "component.h"
 
-class Measurement
+class Measurement : public DataSetNode
 {
 private:
-
-    QString name;
-
+    Measurement();
 
 public:
+    static Measurement construct(DataSetNode* parent, const MatStruct& matStruct);
 
-    enum Type { SCALAR, SWEEP, SWEEPS };
+    enum Type { SCALAR, SWEEP, MULTI_SWEEP };
 
     Measurement();
 
+    //QList<Component> components();
     int getSweepCount();
 
+private:
+    Components mComponents;
 
 };
 
