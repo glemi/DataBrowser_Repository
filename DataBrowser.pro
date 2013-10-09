@@ -11,6 +11,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = DataBrowser
 TEMPLATE = app
 
+CONFIG += c++11
+QMAKE_CXXFLAGS += -std=c++0x
+
 
 SOURCES  += main.cpp\
             mainwindow.cpp \
@@ -27,9 +30,24 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-matioWrapper-Desktop_Qt_5_1_1_GCC_64bit-Debug/release/ -lmatioWrapper
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-matioWrapper-Desktop_Qt_5_1_1_GCC_64bit-Debug/debug/ -lmatioWrapper
-else:unix: LIBS += -L$$PWD/../build-matioWrapper-Desktop_Qt_5_1_1_GCC_64bit-Debug/ -lmatioWrapper
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/matiowrapper-build -lmatioWrapper
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/matiowrapper-build -lmatioWrapper
+else:unix: LIBS += -L$$PWD/matiowrapper-build -lmatioWrapper
 
-INCLUDEPATH += $$PWD/../matioWrapper
-DEPENDPATH += $$PWD/../matioWrapper
+INCLUDEPATH += $$PWD/../MatioWrapper \
+                $$PWD/../matio-1.5.2/src
+
+DEPENDPATH += $$PWD/../MatioWrapper \
+                $$PWD/../matio-1.5.2/src
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../matio-1.5.2/src/.libs/release/ -lmatio
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../matio-1.5.2/src/.libs/debug/ -lmatio
+else:symbian: LIBS += -lmatio
+else:unix: LIBS += -L$$PWD/../matio-1.5.2/src/.libs/ -lmatio
+
+INCLUDEPATH += $$PWD/../matio-1.5.2/src
+DEPENDPATH += $$PWD/../matio-1.5.2/src
+
+win32:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../matio-1.5.2/src/.libs/release/matio.lib
+else:win32:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../matio-1.5.2/src/.libs/debug/matio.lib
+else:unix:!symbian: PRE_TARGETDEPS += $$PWD/../matio-1.5.2/src/.libs/libmatio.a

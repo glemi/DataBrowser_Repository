@@ -8,20 +8,18 @@
 class Measurement : public DataSetNode
 {
 private:
-    Measurement();
+    Measurement(DataSetNode* parent);
 
 public:
     static Measurement construct(DataSetNode* parent, const MatStruct& matStruct);
 
     enum Type { SCALAR, SWEEP, MULTI_SWEEP };
 
-    Measurement();
-
     //QList<Component> components();
     int getSweepCount();
 
 private:
-    Components mComponents;
+     Components mComponents;
 
 };
 

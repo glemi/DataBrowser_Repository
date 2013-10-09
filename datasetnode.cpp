@@ -1,9 +1,5 @@
 #include "datasetnode.h"
 
-DataSetNode::DataSetNode()
-{
-}
-
 
 DataSetNode::DataSetNode(DataSetNode* parent)
 {

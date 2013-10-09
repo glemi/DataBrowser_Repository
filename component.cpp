@@ -2,15 +2,16 @@
 
 #include <QRegExp>
 
-Component::Component()
+Component::Component(DataSetNode* parent)
+    : DataSetNode(parent)
 {
 }
 
-Measurement Component::construct(DataSetNode *parent, const MatVar &matVar)
+Component* Component::construct(DataSetNode *parent, const MatVar &matVar)
 {
-    Component component = new Component(parent);
+    Component* component = new Component(parent);
 
-    QRegExp pattern("([IV])_(\w+)");
+    QRegExp pattern("([IV])_(\\w+)");
     QString varname = matVar.getName();
 
     if(pattern.exactMatch(varname))
@@ -18,13 +19,15 @@ Measurement Component::construct(DataSetNode *parent, const MatVar &matVar)
         QString first = pattern.cap(0);
         QString secnd = pattern.cap(1);
 
-        component.mTerminal = secnd;
+        component->mTerminal = secnd;
 
         if (first == "I")
-            component.mUnit = "A";
+            component->mUnit = "A";
         else if (first == "V")
-            component.mUnit = "V";
+            component->mUnit = "V";
 
-        mArray = matVar.getDoubleArrayData();
+        component->mArray = matVar.getDoubleArrayData();
     }
+
+    return component;
 }

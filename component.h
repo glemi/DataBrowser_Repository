@@ -7,17 +7,14 @@
 
 #include <QString>
 #include <QList>
-
-class Component;
-typedef QList<Component*> Components;
-
+#include <QVector>
 
 class Component : public DataSetNode
 {
 public:
     Component(DataSetNode* parent);
 
-    static Measurement construct(DataSetNode* parent, const MatVar& matVar);
+    static Component* construct(DataSetNode* parent, const MatVar& matVar);
 
     QString unit();
     QString terminal();
@@ -28,5 +25,7 @@ private:
 
     QVector<double> mArray;
 };
+
+typedef QList<Component*> Components;
 
 #endif // COMPONENT_H
