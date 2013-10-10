@@ -20,13 +20,13 @@ SOURCES  += main.cpp\
             measurement.cpp \
             datasetmodel.cpp \
             datasetnode.cpp \
-    component.cpp
+            component.cpp
 
 HEADERS  += mainwindow.h \
 	    measurement.h \
             datasetmodel.h \
             datasetnode.h \
-    component.h
+            component.h
 
 FORMS    += mainwindow.ui
 
